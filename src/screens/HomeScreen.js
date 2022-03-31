@@ -4,6 +4,8 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
+  Image,
+  View,
 } from "react-native";
 import React, { Fragment } from "react";
 import useFetch from "../hooks/useFetch";
@@ -21,13 +23,30 @@ export const HomeScreen = () => {
           <ActivityIndicator size="large" color="#fafafa" />
         ) : (
           <SafeAreaView>
-            <Text>Home</Text>
+            <Text>Where in the world?</Text>
             <FlatList
               data={data}
               keyExtractor={(item) => item.cca3}
               renderItem={({ item }) => (
-                <TouchableOpacity onPress={() => console.log("Hello!")}>
-                  <Text>{item.cca3}</Text>
+                <TouchableOpacity onPress={() => console.log(item.cca3)}>
+                  <View>
+                    <Image source={{ uri: `${item.flags.png}` }} />
+                  </View>
+                  <View>
+                    <Text>{item.name.common}</Text>
+                  </View>
+                  <View>
+                    <Text>Population: </Text>
+                    <Text>{item.population}</Text>
+                  </View>
+                  <View>
+                    <Text>Region: </Text>
+                    <Text>{item.region}</Text>
+                  </View>
+                  <View>
+                    <Text>Capital: </Text>
+                    <Text>{item.capital}</Text>
+                  </View>
                 </TouchableOpacity>
               )}
             />

@@ -1,16 +1,12 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { HomeScreen } from "./src/screens/HomeScreen";
 import { ThemeProvider } from "styled-components";
 import themes from "./src/themes";
 
-function App() {
+export default function App() {
   return (
-    <Fragment>
-      <ThemeProvider theme={themes.dark}>
-        <HomeScreen />
-      </ThemeProvider>
-    </Fragment>
+    <ThemeProvider theme={themes.dark}>
+      <HomeScreen />
+    </ThemeProvider>
   );
 }
-
-export default App;

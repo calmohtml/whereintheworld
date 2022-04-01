@@ -1,4 +1,4 @@
-import { ActivityIndicator, Text } from "react-native";
+import { ActivityIndicator } from "react-native";
 import React, { Fragment } from "react";
 import useFetch from "../hooks/useFetch";
 import { HeadingOne, HeadingTwo, HeadingThree } from "../styles/GlobalStyles";
@@ -11,21 +11,23 @@ import {
   CountryName,
   CountryInfo,
 } from "../styles/HomeStyles";
+import { Header } from "../components/Header/Header";
 
 export const HomeScreen = () => {
   const BASE_URL = "https://restcountries.com/v3.1";
   const { data, loading, error } = useFetch(`${BASE_URL}/all`);
+  const numbro = require("numbro");
 
   if (error) {
     console.log(error);
   } else {
     return (
       <Container>
+        <Header />
         {loading ? (
           <ActivityIndicator size="large" color="#fafafa" />
         ) : (
           <Fragment>
-            <HeadingOne>Where in the world?</HeadingOne>
             <List
               data={data}
               keyExtractor={(item) => item.cca3}
@@ -39,7 +41,11 @@ export const HomeScreen = () => {
                   </CountryName>
                   <CountryInfo>
                     <HeadingTwo>Population: </HeadingTwo>
-                    <HeadingThree>{item.population}</HeadingThree>
+                    <HeadingThree>
+                      {numbro(item.population).format({
+                        thousandSeparated: true,
+                      })}
+                    </HeadingThree>
                   </CountryInfo>
                   <CountryInfo>
                     <HeadingTwo>Region: </HeadingTwo>

@@ -7,7 +7,7 @@ export const Container = styled.SafeAreaView`
   height: 100%;
 `;
 
-export const List = styled.FlatList`
+export const List = styled.ScrollView`
   flex: 1;
   background-color: ${(props) => props.theme.background};
   margin: 0 auto;

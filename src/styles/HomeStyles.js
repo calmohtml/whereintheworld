@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
 
 export const Container = styled.SafeAreaView`
-  margin: 30px 0;
   flex-direction: column;
   background-color: ${(props) => props.theme.background};
   height: 100%;

@@ -1,19 +1,14 @@
-import { ActivityIndicator, SafeAreaView, Button, Text } from "react-native";
-import React, { Fragment } from "react";
+import React from "react";
 import useFetch from "../hooks/useFetch";
-import { HeadingOne, HeadingTwo, HeadingThree } from "../styles/GlobalStyles";
 import {
-  Container,
-  List,
-  CountryContainer,
-  CountryFlagContainer,
-  CountryFlag,
-  CountryName,
-  CountryInfo,
-} from "../styles/HomeStyles";
-import { Header } from "../components/Header/Header";
+  View,
+  Text,
+  ActivityIndicator,
+  StyleSheet,
+  Button,
+} from "react-native";
 
-export const CountryScreen = ({ route, navigation }) => {
+export const CountryScreen = ({ navigation, route }) => {
   const { countryName } = route.params;
   const BASE_URL = "https://restcountries.com/v3.1";
   const { data, loading, error } = useFetch(
@@ -21,31 +16,54 @@ export const CountryScreen = ({ route, navigation }) => {
   );
   const numbro = require("numbro");
 
-  if (error) {
-    console.log(error);
-  } else {
-    return (
+  return (
+    <View style={styles.container}>
+      <Button title="Go back" onPress={() => navigation.navigate("Home")} />
+      {loading ? (
+        <ActivityIndicator size="large" color="#000" />
+      ) : (
+        <View>
+          {data.map(({ cca3, population }) => (
+            <View key={cca3}>
+              <Text style={styles.title}>Population: {population}</Text>
+            </View>
+          ))}
+        </View>
+      )}
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "black",
+    flex: 1,
+  },
+  title: {
+    color: "white",
+  },
+});
+
+{
+  /* 
       <Container>
         <Header />
-        <Button onPress={() => navigation.navigate("Home")} title="Go back" />
+        <ReturnButton onPress={() => navigation.navigate("Home")}>
+          <ReturnButtonText>Go back</ReturnButtonText>
+        </ReturnButton>
         {loading ? (
           <ActivityIndicator size="large" color="#fafafa" />
         ) : (
-          <SafeAreaView>
-            <List
-              data={data}
-              keyExtractor={(item) => item.cca3}
-              renderItem={({ item }) => (
-                <CountryContainer onPress={() => console.log(item.cca3)}>
-                  <CountryName>
-                    <HeadingOne>{item.name.common}</HeadingOne>
-                  </CountryName>
-                </CountryContainer>
-              )}
-            />
-          </SafeAreaView>
-        )}
+          <Country>
+            {data.map((item) => (
+              <View key={item.cca3}>
+                <CountryFlagContainer>
+                  <CountryFlag source={{ uri: `${flags.png}` }} />
+                </CountryFlagContainer>
+              </View>
+            ))}
+          </Country>
+        )} 
       </Container>
-    );
-  }
-};
+    */
+}

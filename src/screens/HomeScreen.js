@@ -28,36 +28,36 @@ export const HomeScreen = ({ navigation }) => {
           <ActivityIndicator size="large" color="#fafafa" />
         ) : (
           <List>
-            {data.map((item) => (
+            {data.map(({ cca3, name, flags, population, region, capital }) => (
               <CountryContainer
-                key={item.cca3}
+                key={cca3}
                 onPress={() => {
                   navigation.navigate("Country", {
-                    countryName: item.name.common,
+                    countryName: name.common,
                   });
                 }}
               >
                 <CountryFlagContainer>
-                  <CountryFlag source={{ uri: `${item.flags.png}` }} />
+                  <CountryFlag source={{ uri: `${flags.png}` }} />
                 </CountryFlagContainer>
                 <CountryName>
-                  <HeadingOne>{item.name.common}</HeadingOne>
+                  <HeadingOne>{name.common}</HeadingOne>
                 </CountryName>
                 <CountryInfo>
                   <HeadingTwo>Population: </HeadingTwo>
                   <HeadingThree>
-                    {numbro(item.population).format({
+                    {numbro(population).format({
                       thousandSeparated: true,
                     })}
                   </HeadingThree>
                 </CountryInfo>
                 <CountryInfo>
                   <HeadingTwo>Region: </HeadingTwo>
-                  <HeadingThree>{item.region}</HeadingThree>
+                  <HeadingThree>{region}</HeadingThree>
                 </CountryInfo>
                 <CountryInfo>
                   <HeadingTwo>Capital: </HeadingTwo>
-                  <HeadingThree>{item.capital}</HeadingThree>
+                  <HeadingThree>{capital || "None"}</HeadingThree>
                 </CountryInfo>
               </CountryContainer>
             ))}

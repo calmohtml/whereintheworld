@@ -1,6 +1,6 @@
 import React from "react";
 import useFetch from "../hooks/useFetch";
-import { View, ActivityIndicator } from "react-native";
+import { View, ActivityIndicator, Text } from "react-native";
 import { HeadingOne, HeadingTwo, HeadingThree } from "../styles/GlobalStyles";
 import { Header } from "../components/Header/Header";
 import {
@@ -104,11 +104,16 @@ export const CountryScreen = ({ navigation, route }) => {
                   <CountryInfoSeparator>
                     <CountryInfo>
                       <HeadingTwo>Borders: </HeadingTwo>
-                      {borders.map((borderCountry) => (
-                        <BorderCountryContainer key={borderCountry}>
-                          <BorderCountry>{borderCountry}</BorderCountry>
+                      {(
+                        <BorderCountryContainer>
+                          <BorderCountry>None</BorderCountry>
                         </BorderCountryContainer>
-                      ))}
+                      ) ||
+                        borders.map((borderCountry) => (
+                          <BorderCountryContainer key={borderCountry}>
+                            <BorderCountry>{borderCountry}</BorderCountry>
+                          </BorderCountryContainer>
+                        ))}
                     </CountryInfo>
                   </CountryInfoSeparator>
                 </View>

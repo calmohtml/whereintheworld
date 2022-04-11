@@ -63,7 +63,11 @@ export const CountryScreen = ({ navigation, route }) => {
                     <CountryInfo>
                       <HeadingTwo>Native name: </HeadingTwo>
                       <HeadingThree>
-                        {Object.values(nativeName)[0].common}
+                        {!nativeName ? (
+                          <Text>None</Text>
+                        ) : (
+                          Object.values(nativeName)[0].common
+                        )}
                       </HeadingThree>
                     </CountryInfo>
                     <CountryInfo>
@@ -78,11 +82,11 @@ export const CountryScreen = ({ navigation, route }) => {
                     </CountryInfo>
                     <CountryInfo>
                       <HeadingTwo>Sub Region: </HeadingTwo>
-                      <HeadingThree>{subregion}</HeadingThree>
+                      <HeadingThree>{subregion || "Antartic"}</HeadingThree>
                     </CountryInfo>
                     <CountryInfo>
                       <HeadingTwo>Capital: </HeadingTwo>
-                      <HeadingThree>{capital}</HeadingThree>
+                      <HeadingThree>{capital || "None"}</HeadingThree>
                     </CountryInfo>
                   </CountryInfoSeparator>
                   <CountryInfoSeparator>
@@ -93,27 +97,38 @@ export const CountryScreen = ({ navigation, route }) => {
                     <CountryInfo>
                       <HeadingTwo>Currencies: </HeadingTwo>
                       <HeadingThree>
-                        {Object.values(currencies)[0].name}
+                        {!currencies ? (
+                          <Text>None</Text>
+                        ) : (
+                          Object.values(currencies)[0].name
+                        )}
                       </HeadingThree>
                     </CountryInfo>
                     <CountryInfo>
                       <HeadingTwo>Languages: </HeadingTwo>
-                      <HeadingThree>{Object.values(languages)[0]}</HeadingThree>
+                      <HeadingThree>
+                        {!languages ? (
+                          <Text>None</Text>
+                        ) : (
+                          Object.values(languages)[0]
+                        )}
+                      </HeadingThree>
                     </CountryInfo>
                   </CountryInfoSeparator>
                   <CountryInfoSeparator>
                     <CountryInfo>
                       <HeadingTwo>Borders: </HeadingTwo>
-                      {(
+                      {!borders ? (
                         <BorderCountryContainer>
                           <BorderCountry>None</BorderCountry>
                         </BorderCountryContainer>
-                      ) ||
+                      ) : (
                         borders.map((borderCountry) => (
                           <BorderCountryContainer key={borderCountry}>
                             <BorderCountry>{borderCountry}</BorderCountry>
                           </BorderCountryContainer>
-                        ))}
+                        ))
+                      )}
                     </CountryInfo>
                   </CountryInfoSeparator>
                 </View>

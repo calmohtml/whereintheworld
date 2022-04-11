@@ -55,10 +55,19 @@ export const HomeScreen = ({ navigation }) => {
                   <HeadingTwo>Region: </HeadingTwo>
                   <HeadingThree>{region}</HeadingThree>
                 </CountryInfo>
-                <CountryInfo>
-                  <HeadingTwo>Capital: </HeadingTwo>
-                  <HeadingThree>{capital || "None"}</HeadingThree>
-                </CountryInfo>
+                {capital !== undefined ? (
+                  <CountryInfo>
+                    <HeadingTwo>Capital: </HeadingTwo>
+                    {capital.map((capital) => (
+                      <HeadingThree key={capital}>{capital} </HeadingThree>
+                    ))}
+                  </CountryInfo>
+                ) : (
+                  <CountryInfo>
+                    <HeadingTwo>Capital: </HeadingTwo>
+                    <HeadingThree>None</HeadingThree>
+                  </CountryInfo>
+                )}
               </CountryContainer>
             ))}
           </List>

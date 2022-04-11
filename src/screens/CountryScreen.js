@@ -84,10 +84,19 @@ export const CountryScreen = ({ navigation, route }) => {
                       <HeadingTwo>Sub Region: </HeadingTwo>
                       <HeadingThree>{subregion || "Antartic"}</HeadingThree>
                     </CountryInfo>
-                    <CountryInfo>
-                      <HeadingTwo>Capital: </HeadingTwo>
-                      <HeadingThree>{capital || "None"}</HeadingThree>
-                    </CountryInfo>
+                    {capital !== undefined ? (
+                      <CountryInfo>
+                        <HeadingTwo>Capital: </HeadingTwo>
+                        {capital.map((capital) => (
+                          <HeadingThree key={capital}>{capital} </HeadingThree>
+                        ))}
+                      </CountryInfo>
+                    ) : (
+                      <CountryInfo>
+                        <HeadingTwo>Capital: </HeadingTwo>
+                        <HeadingThree>None</HeadingThree>
+                      </CountryInfo>
+                    )}
                   </CountryInfoSeparator>
                   <CountryInfoSeparator>
                     <CountryInfo>

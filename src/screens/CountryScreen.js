@@ -1,21 +1,20 @@
 import React from "react";
 import useFetch from "../hooks/useFetch";
 import { View, ActivityIndicator, Text } from "react-native";
-import { HeadingOne, HeadingTwo, HeadingThree } from "../styles/GlobalStyles";
+import { HeadingThree } from "../styles/GlobalStyles";
 import { Header } from "../components/Header/Header";
 import {
   Container,
   ReturnButton,
   ReturnButtonText,
   Country,
-  CountryFlagContainer,
-  CountryFlag,
-  CountryName,
   CountryInfoSeparator,
-  CountryInfo,
   BorderCountryContainer,
   BorderCountry,
 } from "../styles/CountryStyles";
+import { Flag } from "../components/Country/Flag";
+import { Name } from "../components/Country/Name";
+import { Info } from "../components/Country/Info";
 
 export const CountryScreen = ({ navigation, route }) => {
   const { countryName } = route.params;
@@ -53,92 +52,81 @@ export const CountryScreen = ({ navigation, route }) => {
                 name: { common, nativeName },
               }) => (
                 <View key={cca3}>
-                  <CountryFlagContainer>
-                    <CountryFlag source={{ uri: `${flags.png}` }} />
-                  </CountryFlagContainer>
-                  <CountryName>
-                    <HeadingOne>{common}</HeadingOne>
-                  </CountryName>
+                  <Flag flags={{ uri: `${flags.png}` }} />
+                  <Name name={common} />
                   <CountryInfoSeparator>
-                    <CountryInfo>
-                      <HeadingTwo>Native name: </HeadingTwo>
-                      <HeadingThree>
-                        {!nativeName ? (
+                    <Info
+                      infoName="Native name: "
+                      infoDetails={
+                        !nativeName ? (
                           <Text>None</Text>
                         ) : (
                           Object.values(nativeName)[0].common
-                        )}
-                      </HeadingThree>
-                    </CountryInfo>
-                    <CountryInfo>
-                      <HeadingTwo>Population: </HeadingTwo>
-                      <HeadingThree>
-                        {numbro(population).format({ thousandSeparated: true })}
-                      </HeadingThree>
-                    </CountryInfo>
-                    <CountryInfo>
-                      <HeadingTwo>Region: </HeadingTwo>
-                      <HeadingThree>{region}</HeadingThree>
-                    </CountryInfo>
-                    <CountryInfo>
-                      <HeadingTwo>Sub Region: </HeadingTwo>
-                      <HeadingThree>{subregion || "Antartic"}</HeadingThree>
-                    </CountryInfo>
+                        )
+                      }
+                    />
+                    <Info
+                      infoName="Population: "
+                      infoDetails={numbro(population).format({
+                        thousandSeparated: true,
+                      })}
+                    />
+                    <Info infoName="Region: " infoDetails={region} />
+                    <Info
+                      infoName="Sub Region: "
+                      infoDetails={subregion || "Antartic"}
+                    />
                     {capital !== undefined ? (
-                      <CountryInfo>
-                        <HeadingTwo>Capital: </HeadingTwo>
-                        {capital.map((capital) => (
+                      <Info
+                        infoName="Capital: "
+                        infoDetails={capital.map((capital) => (
                           <HeadingThree key={capital}>{capital} </HeadingThree>
                         ))}
-                      </CountryInfo>
+                      />
                     ) : (
-                      <CountryInfo>
-                        <HeadingTwo>Capital: </HeadingTwo>
-                        <HeadingThree>None</HeadingThree>
-                      </CountryInfo>
+                      <Info infoName="Capital" infoDetails="None" />
                     )}
                   </CountryInfoSeparator>
                   <CountryInfoSeparator>
-                    <CountryInfo>
-                      <HeadingTwo>Top Level domain: </HeadingTwo>
-                      <HeadingThree>{tld[0]}</HeadingThree>
-                    </CountryInfo>
-                    <CountryInfo>
-                      <HeadingTwo>Currencies: </HeadingTwo>
-                      <HeadingThree>
-                        {!currencies ? (
+                    <Info infoName="Top Level domain: " infoDetails={tld[0]} />
+                    <Info
+                      infoName="Currencies: "
+                      infoDetails={
+                        !currencies ? (
                           <Text>None</Text>
                         ) : (
                           Object.values(currencies)[0].name
-                        )}
-                      </HeadingThree>
-                    </CountryInfo>
-                    <CountryInfo>
-                      <HeadingTwo>Languages: </HeadingTwo>
-                      <HeadingThree>
-                        {!languages ? (
+                        )
+                      }
+                    />
+                    <Info
+                      infoName="Languages: "
+                      infoDetails={
+                        !languages ? (
                           <Text>None</Text>
                         ) : (
                           Object.values(languages)[0]
-                        )}
-                      </HeadingThree>
-                    </CountryInfo>
+                        )
+                      }
+                    />
                   </CountryInfoSeparator>
                   <CountryInfoSeparator>
-                    <CountryInfo>
-                      <HeadingTwo>Borders: </HeadingTwo>
-                      {!borders ? (
-                        <BorderCountryContainer>
-                          <BorderCountry>None</BorderCountry>
-                        </BorderCountryContainer>
-                      ) : (
-                        borders.map((borderCountry) => (
-                          <BorderCountryContainer key={borderCountry}>
-                            <BorderCountry>{borderCountry}</BorderCountry>
+                    <Info
+                      infoName="Borders: "
+                      infoDetails={
+                        !borders ? (
+                          <BorderCountryContainer>
+                            <BorderCountry>None</BorderCountry>
                           </BorderCountryContainer>
-                        ))
-                      )}
-                    </CountryInfo>
+                        ) : (
+                          borders.map((borderCountry) => (
+                            <BorderCountryContainer key={borderCountry}>
+                              <BorderCountry>{borderCountry}</BorderCountry>
+                            </BorderCountryContainer>
+                          ))
+                        )
+                      }
+                    />
                   </CountryInfoSeparator>
                 </View>
               )

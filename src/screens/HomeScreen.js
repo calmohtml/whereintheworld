@@ -1,17 +1,12 @@
 import { TextInput, ActivityIndicator } from "react-native";
 import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
-import { HeadingOne, HeadingTwo, HeadingThree } from "../styles/GlobalStyles";
-import {
-  Container,
-  List,
-  CountryContainer,
-  CountryFlagContainer,
-  CountryFlag,
-  CountryName,
-  CountryInfo,
-} from "../styles/HomeStyles";
+import { HeadingThree } from "../styles/GlobalStyles";
+import { Container, List, CountryContainer } from "../styles/HomeStyles";
 import { Header } from "../components/Header/Header";
+import { Flag } from "../components/Home/Flag";
+import { Name } from "../components/Home/Name";
+import { Info } from "../components/Home/Info";
 
 export const HomeScreen = ({ navigation }) => {
   const BASE_URL = "https://restcountries.com/v3.1";
@@ -53,36 +48,24 @@ export const HomeScreen = ({ navigation }) => {
                     });
                   }}
                 >
-                  <CountryFlagContainer>
-                    <CountryFlag source={{ uri: `${flags.png}` }} />
-                  </CountryFlagContainer>
-                  <CountryName>
-                    <HeadingOne>{name.common}</HeadingOne>
-                  </CountryName>
-                  <CountryInfo>
-                    <HeadingTwo>Population: </HeadingTwo>
-                    <HeadingThree>
-                      {numbro(population).format({
-                        thousandSeparated: true,
-                      })}
-                    </HeadingThree>
-                  </CountryInfo>
-                  <CountryInfo>
-                    <HeadingTwo>Region: </HeadingTwo>
-                    <HeadingThree>{region}</HeadingThree>
-                  </CountryInfo>
+                  <Flag flags={{ uri: `${flags.png}` }} />
+                  <Name name={name.common} />
+                  <Info
+                    infoName="Population: "
+                    infoDetails={numbro(population).format({
+                      thousandSeparated: true,
+                    })}
+                  />
+                  <Info infoName="Region: " infoDetails={region} />
                   {capital !== undefined ? (
-                    <CountryInfo>
-                      <HeadingTwo>Capital: </HeadingTwo>
-                      {capital.map((capital) => (
+                    <Info
+                      infoName="Capital: "
+                      infoDetails={capital.map((capital) => (
                         <HeadingThree key={capital}>{capital} </HeadingThree>
                       ))}
-                    </CountryInfo>
+                    />
                   ) : (
-                    <CountryInfo>
-                      <HeadingTwo>Capital: </HeadingTwo>
-                      <HeadingThree>None</HeadingThree>
-                    </CountryInfo>
+                    <Info infoName="Capital" infoDetails="None" />
                   )}
                 </CountryContainer>
               ))}

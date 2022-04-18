@@ -10,7 +10,7 @@ export default function App() {
   const Stack = createNativeStackNavigator();
 
   return (
-    <ThemeProvider theme={themes.dark}>
+    <ThemeProvider theme={themes.dark ? themes.dark : themes.light}>
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Home"

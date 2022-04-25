@@ -12,8 +12,8 @@ import {
   BorderCountryContainer,
   BorderCountry,
 } from "../styles/CountryStyles";
-import { Flag } from "../components/Country/Flag";
-import { Name } from "../components/Country/Name";
+import { Flag } from "../components/Flag";
+import { Name } from "../components/Name";
 import { Info } from "../components/Country/Info";
 
 export const CountryScreen = ({ navigation, route }) => {
@@ -49,11 +49,12 @@ export const CountryScreen = ({ navigation, route }) => {
                 languages,
                 flags,
                 borders,
+                flag,
                 name: { common, nativeName },
               }) => (
                 <View key={cca3}>
                   <Flag flags={{ uri: `${flags.png}` }} />
-                  <Name name={common} />
+                  <Name name={common} emoji={flag} />
                   <CountryInfoSeparator>
                     <Info
                       infoName="Native name: "

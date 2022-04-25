@@ -29,23 +29,8 @@ export const Country = styled.View`
   width: 80%;
 `;
 
-export const CountryFlagContainer = styled.View`
-  display: flex;
-  align-items: center;
-`;
-
-export const CountryFlag = styled.Image`
-  width: 100%;
-  height: 200px;
-`;
-
 export const CountryInfoSeparator = styled.View`
   margin-bottom: 30px;
-`;
-
-export const CountryName = styled.View`
-  margin: 10px 0;
-  padding: 5px;
 `;
 
 export const CountryInfo = styled.View`

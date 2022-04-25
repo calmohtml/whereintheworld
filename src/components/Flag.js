@@ -1,5 +1,5 @@
 import React from "react";
-import { CountryFlagContainer, CountryFlag } from "../../styles/HomeStyles";
+import { CountryFlagContainer, CountryFlag } from "../styles/GlobalStyles";
 
 export const Flag = ({ flags }) => {
   return (

@@ -28,3 +28,25 @@ export const HeadingThree = styled.Text`
   color: ${(props) => props.theme.color};
   font-family: "NunitoSans-Light";
 `;
+
+export const CountryName = styled.View`
+  margin: 10px 0;
+  padding: 10px;
+`;
+
+export const CountryFlagContainer = styled.View`
+  display: flex;
+  align-items: center;
+`;
+
+export const CountryFlag = styled.Image`
+  width: 100%;
+  height: 200px;
+`;
+
+export const CountryInfo = styled.View`
+  padding-left: 5px;
+  padding-bottom: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;

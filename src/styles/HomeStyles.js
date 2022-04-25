@@ -23,21 +23,6 @@ export const CountryContainer = styled.TouchableOpacity`
   overflow: hidden;
 `;
 
-export const CountryFlagContainer = styled.View`
-  display: flex;
-  align-items: center;
-`;
-
-export const CountryFlag = styled.Image`
-  width: 100%;
-  height: 200px;
-`;
-
-export const CountryName = styled.View`
-  margin: 10px 0;
-  padding: 10px;
-`;
-
 export const CountryInfo = styled.View`
   padding-left: 10px;
   padding-bottom: 10px;

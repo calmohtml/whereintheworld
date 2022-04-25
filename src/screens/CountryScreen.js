@@ -87,7 +87,7 @@ export const CountryScreen = ({ navigation, route }) => {
                         ))}
                       />
                     ) : (
-                      <Info infoName="Capital" infoDetails="None" />
+                      <Info infoName="Capital: " infoDetails="None" />
                     )}
                   </CountryInfoSeparator>
                   <CountryInfoSeparator>

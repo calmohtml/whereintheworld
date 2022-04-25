@@ -37,7 +37,7 @@ export const BorderCountryContainer = styled.TouchableOpacity`
   border: 1px solid ${(props) => props.theme.color};
   border-radius: 5px;
   padding: 0 5px;
-  margin: 0 5px;
+  margin-right: 10px;
 `;
 
 export const BorderCountry = styled.Text`

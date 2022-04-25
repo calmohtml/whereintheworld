@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { HeadingThree } from "../styles/GlobalStyles";
 import { Container, List, CountryContainer } from "../styles/HomeStyles";
-import { Header } from "../components/Header/Header";
-import { Info } from "../components/Home/Info";
+import { Header } from "../components/Header";
+import { Info } from "../components/Info";
 import { Flag } from "../components/Flag";
 import { Name } from "../components/Name";
 

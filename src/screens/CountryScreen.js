@@ -2,7 +2,7 @@ import React from "react";
 import useFetch from "../hooks/useFetch";
 import { View, ActivityIndicator, Text } from "react-native";
 import { HeadingThree } from "../styles/GlobalStyles";
-import { Header } from "../components/Header/Header";
+import { Header } from "../components/Header";
 import {
   Container,
   ReturnButton,
@@ -14,7 +14,7 @@ import {
 } from "../styles/CountryStyles";
 import { Flag } from "../components/Flag";
 import { Name } from "../components/Name";
-import { Info } from "../components/Country/Info";
+import { Info } from "../components/Info";
 
 export const CountryScreen = ({ navigation, route }) => {
   const { countryName } = route.params;

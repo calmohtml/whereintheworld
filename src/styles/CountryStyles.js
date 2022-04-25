@@ -33,19 +33,11 @@ export const CountryInfoSeparator = styled.View`
   margin-bottom: 30px;
 `;
 
-export const CountryInfo = styled.View`
-  padding-left: 5px;
-  padding-bottom: 10px;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
-
 export const BorderCountryContainer = styled.TouchableOpacity`
   border: 1px solid ${(props) => props.theme.color};
   border-radius: 5px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  padding: 0 7px;
+  padding: 0 5px;
+  margin: 0 5px;
 `;
 
 export const BorderCountry = styled.Text`

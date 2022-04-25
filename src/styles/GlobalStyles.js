@@ -45,8 +45,7 @@ export const CountryFlag = styled.Image`
 `;
 
 export const CountryInfo = styled.View`
-  padding-left: 5px;
+  padding-left: 10px;
   padding-bottom: 10px;
   flex-direction: row;
-  flex-wrap: wrap;
 `;

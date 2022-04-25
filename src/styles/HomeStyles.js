@@ -22,9 +22,3 @@ export const CountryContainer = styled.TouchableOpacity`
   border-radius: 10px;
   overflow: hidden;
 `;
-
-export const CountryInfo = styled.View`
-  padding-left: 10px;
-  padding-bottom: 10px;
-  flex-direction: row;
-`;

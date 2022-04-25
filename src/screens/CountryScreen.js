@@ -50,6 +50,8 @@ export const CountryScreen = ({ navigation, route }) => {
                 flags,
                 borders,
                 flag,
+                demonyms,
+                area,
                 name: { common, nativeName },
               }) => (
                 <View key={cca3}>
@@ -109,6 +111,15 @@ export const CountryScreen = ({ navigation, route }) => {
                           Object.values(languages)[0]
                         )
                       }
+                    />
+                  </CountryInfoSeparator>
+                  <CountryInfoSeparator>
+                    <Info infoName="Demonyms: " infoDetails={demonyms.eng.m} />
+                    <Info
+                      infoName="Area: "
+                      infoDetails={`${numbro(area).format({
+                        thousandSeparated: true,
+                      })} km²`}
                     />
                   </CountryInfoSeparator>
                   <CountryInfoSeparator>
